@@ -6,7 +6,7 @@
 #### Download
 
 ##### Setup
-Download or clone this repository into your project in the folder Packages/com.l.m.z.mapgenerator.
+Download or clone this repository into your project in the folder Packages/com.lmz.mapgenerator.
 
 Package Manager Manifest
 Requirements
@@ -15,7 +15,7 @@ Git must be installed and added to your path.
 Setup
 The following line needs to be added to your Packages/manifest.json file in your Unity Project under the dependencies section:
 
-    "com.l.m.z.mapgenerator": "1.0.0"
+    "com.lmz.mapgenerator": "https://github.com/zamecki/MapGenerator.git"
 
 
 #### Creating Map Generator base game objects
