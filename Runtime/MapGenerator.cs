@@ -14,12 +14,10 @@ namespace LMZMapGenerator.Core
 
         [HideInInspector]
         public bool terraingLoaded = false;
-        int chunkVisibleInDistance;
 
         void Start()
         {
-            chunkVisibleInDistance = Mathf.RoundToInt(settings.maxViewDistance / settings.mapChunkSize);
-            TerrainChunk chunk = new TerrainChunk(Vector2.zero, settings.mapChunkSize * settings.mapSize, settings, tilemap);
+            TerrainChunk chunk = new TerrainChunk(Vector2.zero, settings.mapSize, settings, tilemap);
             chunk.onTerrainChunkLoaded += OnTerrainChunkLoaded;
             chunk.Load();
         }
@@ -39,4 +37,5 @@ namespace LMZMapGenerator.Core
             return mapData.positionedTiles.tileHeights[index];
         }
     }
+
 }

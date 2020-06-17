@@ -9,20 +9,19 @@ namespace LMZMapGenerator.Core
     {
         public static MapData GenerateHeightMap(MapGeneratorSettings settings, Vector2 sampleCenter)
         {
-            var size = settings.mapChunkSize * settings.mapSize;
-            PositionedTile positionedTiles = new PositionedTile(size * size);
-            var falloffResult = FalloffGenerator.GenerateFalloff(size, settings);
+            PositionedTile positionedTiles = new PositionedTile(settings.mapSize * settings.mapSize);
+            var falloffResult = FalloffGenerator.GenerateFalloff(settings.mapSize, settings);
             var falloff = falloffResult.Item1;
             var minFalloff = falloffResult.Item2;
             var maxFalloff = falloffResult.Item3;
-            var lerpNoise = new float[size, size];
+            var lerpNoise = new float[settings.mapSize, settings.mapSize];
             if (settings.showFalloffOnly)
             {
-                for (int y = 0; y < size; y++)
+                for (int y = 0; y < settings.mapSize; y++)
                 {
-                    for (int x = 0; x < size; x++)
+                    for (int x = 0; x < settings.mapSize; x++)
                     {
-                        var index = y * size + x;
+                        var index = y * settings.mapSize + x;
 
                         lerpNoise[x, y] = Mathf.InverseLerp(maxFalloff, minFalloff, falloff[x, y]);
                         var roundX = Mathf.RoundToInt(sampleCenter.x) + x;
@@ -34,17 +33,17 @@ namespace LMZMapGenerator.Core
                 return new MapData(falloff, lerpNoise, positionedTiles);
             }
 
-            var noiseResult = Noise.GenerateNoise(size, settings, sampleCenter);
+            var noiseResult = Noise.GenerateNoise(settings.mapSize, settings, sampleCenter);
             var rawNoise = noiseResult.Item1;
             var min = noiseResult.Item2;
             var max = noiseResult.Item3;
-            for (int x = 0; x < size; x++)
+            for (int x = 0; x < settings.mapSize; x++)
             {
-                for (int y = 0; y < size; y++)
+                for (int y = 0; y < settings.mapSize; y++)
                 {
                     lerpNoise[x, y] = Mathf.InverseLerp(min, max, rawNoise[x, y]) - falloff[x, y];
                     var tileBase = settings.GetTileHeight(lerpNoise[x, y]);
-                    var index = y * size + x;
+                    var index = y * settings.mapSize + x;
                     var roundX = Mathf.RoundToInt(sampleCenter.x) + x;
                     var roundY = Mathf.RoundToInt(sampleCenter.y) + y;
                     positionedTiles.Add(index, roundX, roundY, tileBase);

@@ -28,9 +28,7 @@ namespace LMZMapGenerator.Core
         [Header("Map Settings")]
         public float mapScale = 1f;
         public int mapSize = 6;
-        public int mapChunkSize = 64;
-        public float maxViewDistance = 128;
-        public float viewerMoveThresholdForCrunkUpdate = 25;
+    
 
         [Header("Tile Settings")]
         public Gradient gradient = new Gradient();
