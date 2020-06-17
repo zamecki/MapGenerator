@@ -1,0 +1,15 @@
+{
+    "name": "LMZMapGenerator.Utilities",
+    "references": [
+        "GUID:2d7e0a0dd118a724f82bddf61d62a03c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

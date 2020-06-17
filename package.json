@@ -1,0 +1,16 @@
+{
+    "name": "com.lmzmapgenerator",
+    "displayName": "Map Generator",
+    "version": "1.0.0",
+    "unity": "2019.2",
+    "description": "Map Generator is a package that contains scripts that with the use of Tilemaps features generate landmasses with perlin noise.",
+    "keywords": ["2d"],
+    "category": "2D",
+    "dependencies": {
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.2d.tilemap": "1.0.0"
+    },
+    "author": {
+      "name": "Lucas Zamecki"
+    }
+}
